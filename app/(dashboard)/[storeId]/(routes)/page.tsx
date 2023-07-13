@@ -1,4 +1,4 @@
-import prismaDb from "@/lib/prismaBd";
+import prismaDb from "@/lib/prismaDb";
 import React, { FC } from "react";
 
 interface DashboardPageProps {

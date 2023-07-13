@@ -1,4 +1,4 @@
-import prismaDb from "@/lib/prismaBd";
+import prismaDb from "@/lib/prismaDb";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
