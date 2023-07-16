@@ -10,13 +10,13 @@ import { useParams, useRouter } from "next/navigation";
 import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
 
-import { SizeColumn, columns } from "./columns";
+import { ColorsColumn, columns } from "./columns";
 
-interface SizesClientProps {
-  data: SizeColumn[];
+interface ColorClientProps {
+  data: ColorsColumn[];
 }
 
-export const SizeClient: FC<SizesClientProps> = ({ data }) => {
+export const ColorClient: FC<ColorClientProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
 
@@ -24,19 +24,19 @@ export const SizeClient: FC<SizesClientProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Sizes (${data.length})`}
-          description="Manage sizes for your store"
+          title={`Colors (${data.length})`}
+          description="Manage colors for your store"
         />
-        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
           <Plus className="mr-2 h-4 w-4" />
           Add New
         </Button>
       </div>
       <Separator />
       <DataTable columns={columns} data={data} searchKey="name" />
-      <Heading title="API" description="API calls for Sizes" />
+      <Heading title="API" description="API calls for Colors" />
       <Separator />
-      <ApiList entityIdName="sizeId" entityName="sizes" />
+      <ApiList entityIdName="colorsId" entityName="colors" />
     </>
   );
 };
