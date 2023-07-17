@@ -15,10 +15,10 @@ import {
 import { Button } from "@/components/ui/button";
 import AlertModal from "@/components/modals/alert-modal";
 
-import { BillboardColumn } from "./columns";
+import { ProductColumn } from "./columns";
 
 interface CellActionProps {
-  data: BillboardColumn;
+  data: ProductColumn;
 }
 
 export const CellAction: FC<CellActionProps> = ({ data }) => {
@@ -30,17 +30,17 @@ export const CellAction: FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Billboard ID copied to the clipboard");
+    toast.success("Product ID copied to the clipboard");
   };
 
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/products/${data.id}`);
       router.refresh();
-      toast.success("Billbord deleted");
+      toast.success("Product deleted");
     } catch (error) {
-      toast.error("Make sure you removed all using this billboard");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -66,7 +66,7 @@ export const CellAction: FC<CellActionProps> = ({ data }) => {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
             onClick={() =>
-              router.push(`/${params.storeId}/billboards/${data.id}`)
+              router.push(`/${params.storeId}/products/${data.id}`)
             }
           >
             <Edit className="mr-2 h-4 w-4" />
